@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import redis.clients.jedis.Jedis;
+import org.cloudfoundry.runtime.env.CloudEnvironment;
 
 /**
  * Servlet implementation class SimpleServlet
