@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import redis.clients.jedis.Jedis;
 
 /**
  * Servlet implementation class SimpleServlet
@@ -33,8 +34,9 @@ public class ListenerServlet extends HttpServlet {
     	String spd = request.getParameter("spd");
     	System.out.println(spd);
     	
-    	Jedis j = new 
-    	
+		Object[] serviceInfo = getServiceInfo();
+      	Jedis jedis = new Jedis((String)serviceInfo[0], (Integer)serviceInfo[1]);
+      	
         response.setContentType("application/json");
         response.getWriter().print("{\"rc\":\"200\"}");
     }
