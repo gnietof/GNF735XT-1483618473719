@@ -82,7 +82,7 @@ public class ListenerServlet extends HttpServlet {
 
 		URL url = new URL("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR");
 		HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-		uc.setDoInput(false);
+		uc.setDoInput(true);
 		uc.setDoOutput(true);
 		uc.setRequestMethod("POST");
 //		uc.setRequestProperty("Accept","application/json");
