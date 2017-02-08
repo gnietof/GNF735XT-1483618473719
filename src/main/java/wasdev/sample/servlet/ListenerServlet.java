@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import redis.clients.jedis.Jedis;
-import org.cloudfoundry.runtime.env.CloudEnvironment;
+//import org.cloudfoundry.runtime.env.CloudEnvironment;
 
 //import com.ibm.json.java.JSONObject;
 import org.json.simple.JSONObject;
@@ -84,7 +84,7 @@ public class ListenerServlet extends HttpServlet {
     }
     
     
-	public Object[] getServiceInfo() throws Exception{
+/*	public Object[] getServiceInfo() throws Exception{
 	    CloudEnvironment environment = new CloudEnvironment();
 	    if ( environment.getServiceDataByLabels("compose-for-redis").size() == 0 ) {
 	        throw new Exception( "No Redis service is bund to this app!!" );
@@ -99,5 +99,5 @@ public class ListenerServlet extends HttpServlet {
 	
 	    return info;
 	}    
-
+*/
 }
