@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.ibm.json.java.JSONObject;
 import com.ibm.misc.BASE64Encoder;
 
 /**
@@ -45,8 +46,7 @@ public class ListenerServlet extends HttpServlet {
 		}
 		br.close();		
 */		
-		JSONParser parser = new JSONParser();
-		JSONObject ji = parser.parse(request.getInputStream());
+		JSONObject ji = JSONObject.parse(request.getInputStream());
 		
 /*
     	String hr = request.getParameter("hr");
