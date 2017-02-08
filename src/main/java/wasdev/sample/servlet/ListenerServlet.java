@@ -35,7 +35,13 @@ public class ListenerServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
+	}
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 /*
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		String s="";
