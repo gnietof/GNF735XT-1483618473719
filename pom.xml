@@ -47,6 +47,11 @@
       			<artifactId>jedis</artifactId>
       			<version>2.2.1</version>
     	</dependency>    
+		<dependency>
+      		<groupId>json</groupId>
+      			<artifactId>json</artifactId>
+      			<version>1.0</version>
+    	</dependency>    
     </dependencies>
 
     <build>
