@@ -50,7 +50,15 @@ public class ListenerServlet extends HttpServlet {
 		}
 		br.close();		
 */		
-		JSONObject ji = JSONObject.parse(request.getInputStream());
+//		JSONObject ji = JSONObject.parse(request.getInputStream());
+
+		JSONObject ji = new JSONObject(); 
+		Enumeration<String> e = request.getParameterNames();
+		while (e.hasMoreElements()) {
+			String name = e.nextElement();
+			String value = request.getParameter(name);
+			ji.put(name, value);
+		}
 		
 /*
     	String hr = request.getParameter("hr");
