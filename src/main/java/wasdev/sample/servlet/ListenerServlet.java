@@ -83,9 +83,9 @@ public class ListenerServlet extends HttpServlet {
 		URL url = new URL("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR");
 		HttpURLConnection uc = (HttpURLConnection)url.openConnection();
 		uc.setDoInput(true);
-		uc.setDoOutput(true);
+		uc.setDoOutput(false);
 		uc.setRequestMethod("POST");
-		uc.setRequestProperty("Accept","application/json");
+//		uc.setRequestProperty("Accept","application/json");
 		uc.setRequestProperty("Content-Type","application/json");
 		BASE64Encoder b64 = new BASE64Encoder();
 		String encoded = b64.encode((USER + ":" + SECRET).getBytes());
@@ -93,6 +93,10 @@ public class ListenerServlet extends HttpServlet {
 		OutputStream os = uc.getOutputStream();
 		os.write(ji.toString().getBytes());
 		os.close();
+
+		if (uc.getResponseCode() != HttpURLConnection.HTTP_OK) {
+			throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
+		}
 
       	
     }
