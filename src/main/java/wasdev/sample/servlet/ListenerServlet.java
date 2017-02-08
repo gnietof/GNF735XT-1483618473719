@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 //import org.cloudfoundry.runtime.env.CloudEnvironment;
 
 //import com.ibm.json.java.JSONObject;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.ibm.json.java.JSONObject;
 import com.ibm.misc.BASE64Encoder;
