@@ -68,7 +68,7 @@ public class ListenerServlet extends HttpServlet {
 		HttpURLConnection uc = (HttpURLConnection)url.openConnection();
 		uc.setDoInput(true);
 		uc.setDoOutput(true);
-		uc.setRequestMethod(method);
+		uc.setRequestMethod("POST");
 		uc.setRequestProperty("Accept","application/json");
 		uc.setRequestProperty("Content-Type","application/json");
 		BASE64Encoder b64 = new BASE64Encoder();
