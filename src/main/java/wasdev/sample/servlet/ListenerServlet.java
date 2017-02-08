@@ -16,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 //import redis.clients.jedis.Jedis;
 import org.cloudfoundry.runtime.env.CloudEnvironment;
 
-import com.ibm.json.java.JSONObject;
+//import com.ibm.json.java.JSONObject;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import com.ibm.misc.BASE64Encoder;
 
 /**
@@ -42,8 +45,8 @@ public class ListenerServlet extends HttpServlet {
 		}
 		br.close();		
 */		
-		JSONObject ji = new JSONObject();
-		ji.parse(request.getInputStream());
+		JSONParser parser = new JSONParser();
+		JSONObject ji = parser.parse(request.getInputStream());
 		
 /*
     	String hr = request.getParameter("hr");
