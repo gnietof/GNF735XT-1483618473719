@@ -54,38 +54,25 @@ public class ListenerServlet extends HttpServlet {
 */		
 //		JSONObject ji = JSONObject.parse(request.getInputStream());
 
-		JSONObject ji = new JSONObject(); 
+		JSONObject j1 = new JSONObject(); 
 		Enumeration<String> e = request.getParameterNames();
 		while (e.hasMoreElements()) {
 			String name = e.nextElement();
 			String value = request.getParameter(name);
 			ji.put(name, value);
 		}
-		JSONObject ji2 = new JSONObject(); 
+		JSONObject jo = new JSONObject(); 
 		ji2.put("d",ji);
+        callREST("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR","POST",jo.toString(),USER,SECRET);
 
-		
-/*
-    	String hr = request.getParameter("hr");
-    	System.out.println(hr);
-    	
- 		String lat = request.getParameter("lat");
-    	System.out.println(lat);
-    	
-    	String lng = request.getParameter("lng");
-    	System.out.println(lng);
-    	
-    	String spd = request.getParameter("spd");
-    	System.out.println(spd);
- */   	
-//		Object[] serviceInfo = getServiceInfo();
+		JSONObject jo2 = new JSONObject();
+		jo2.put("latitude",request.getParamter("latitude"));
+		jo2.put("longitude",request.getParamter("longitude"));
+        callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),USER,SECRET);
 
         response.setContentType("application/json");
         response.getWriter().print("{\"rc\":\"200\"}");
         
-        callREST("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR","POST",ji.toString(),USER,SECRET);
-
-		URL url = new URL("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR");
 
     }
     
