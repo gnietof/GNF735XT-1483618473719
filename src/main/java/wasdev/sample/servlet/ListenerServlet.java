@@ -109,6 +109,8 @@ public class ListenerServlet extends HttpServlet {
 				sb.append(s);
 			}
 			br.close();
+			System.out.println(sb.toString());
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();			
 		}
