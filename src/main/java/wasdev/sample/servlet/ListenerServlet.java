@@ -66,8 +66,8 @@ public class ListenerServlet extends HttpServlet {
         callREST("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR","POST",jo.toString(),USER,SECRET);
 
 		JSONObject jo2 = new JSONObject();
-		jo2.put("latitude",request.getParamter("latitude"));
-		jo2.put("longitude",request.getParamter("longitude"));
+		jo2.put("latitude",request.getParameter("latitude"));
+		jo2.put("longitude",request.getParameter("longitude"));
         callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),null,null);
 
         response.setContentType("application/json");
