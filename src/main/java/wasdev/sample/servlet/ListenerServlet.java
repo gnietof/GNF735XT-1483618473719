@@ -99,9 +99,25 @@ public class ListenerServlet extends HttpServlet {
 				os.close();
 			}
 	
-			if (uc.getResponseCode() != HttpURLConnection.HTTP_OK) {
+			int rc = uc.getResponseCode();
+			if (rc != HttpURLConnection.HTTP_OK) {
 				throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
 			}
+			
+			if (rc == HttpURLConnection.HTTP_MOVED_TEMP
+				|| rc == HttpURLConnection.HTTP_MOVED_PERM
+				|| rc == HttpURLConnection.HTTP_SEE_OTHER) {
+
+				String url2 = uc.getHeaderField("Location");
+//				String cookies = uc.getHeaderField("Set-Cookie");
+
+				uc = (HttpURLConnection) new URL(newUrl).openConnection();
+//		conn.setRequestProperty("Cookie", cookies);
+//		conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+//		conn.addRequestProperty("User-Agent", "Mozilla");
+//		conn.addRequestProperty("Referer", "google.com");
+
+			}			
 	
 			BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
 	        String s = "";
