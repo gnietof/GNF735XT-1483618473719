@@ -54,7 +54,7 @@ public class ListenerServlet extends HttpServlet {
 */		
 //		JSONObject ji = JSONObject.parse(request.getInputStream());
 
-		JSONObject j1 = new JSONObject(); 
+		JSONObject ji = new JSONObject(); 
 		Enumeration<String> e = request.getParameterNames();
 		while (e.hasMoreElements()) {
 			String name = e.nextElement();
@@ -62,13 +62,13 @@ public class ListenerServlet extends HttpServlet {
 			ji.put(name, value);
 		}
 		JSONObject jo = new JSONObject(); 
-		ji2.put("d",ji);
+		jo.put("d",ji);
         callREST("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR","POST",jo.toString(),USER,SECRET);
 
 		JSONObject jo2 = new JSONObject();
 		jo2.put("latitude",request.getParamter("latitude"));
 		jo2.put("longitude",request.getParamter("longitude"));
-        callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),USER,SECRET);
+        callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),null,null);
 
         response.setContentType("application/json");
         response.getWriter().print("{\"rc\":\"200\"}");
