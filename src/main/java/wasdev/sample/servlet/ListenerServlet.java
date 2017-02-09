@@ -90,37 +90,42 @@ public class ListenerServlet extends HttpServlet {
     }
     
     private String callREST(String href,String method,String data,String user,String pwd) {
-		URL url = new URL(href);
-		HttpURLConnection uc = (HttpURLConnection)url.openConnection();
-		uc.setDoInput(true);
-		uc.setDoOutput(true);
-		uc.setRequestMethod(method);
-//		uc.setRequestProperty("Accept","application/json");
-		uc.setRequestProperty("Content-Type","application/json");
-		if (user!=null) {
-			BASE64Encoder b64 = new BASE64Encoder();
-			String encoded = b64.encode((user + ":" + pwd).getBytes());
-			uc.setRequestProperty("Authorization", "Basic " + encoded);
-		} 
-
-		if (data!=null) {
-			OutputStream os = uc.getOutputStream();
-			os.write(data.getBytes());
-			os.close();
-		}
-
-		if (uc.getResponseCode() != HttpURLConnection.HTTP_OK) {
-			throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
-		}
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
         StringBuffer sb = new  StringBuffer();
-        String s = "";
-        while ((s = br.readLine()) != null) {
-			sb.append(s);
+
+		try {
+			URL url = new URL(href);
+			HttpURLConnection uc = (HttpURLConnection)url.openConnection();
+			uc.setDoInput(true);
+			uc.setDoOutput(true);
+			uc.setRequestMethod(method);
+	//		uc.setRequestProperty("Accept","application/json");
+			uc.setRequestProperty("Content-Type","application/json");
+			if (user!=null) {
+				BASE64Encoder b64 = new BASE64Encoder();
+				String encoded = b64.encode((user + ":" + pwd).getBytes());
+				uc.setRequestProperty("Authorization", "Basic " + encoded);
+			} 
+	
+			if (data!=null) {
+				OutputStream os = uc.getOutputStream();
+				os.write(data.getBytes());
+				os.close();
+			}
+	
+			if (uc.getResponseCode() != HttpURLConnection.HTTP_OK) {
+				throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
+			}
+	
+			BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+	        String s = "";
+	        while ((s = br.readLine()) != null) {
+				sb.append(s);
+			}
+			br.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();			
 		}
-		br.close();
-    	
+
     	return (sb.toString());
     }
     
