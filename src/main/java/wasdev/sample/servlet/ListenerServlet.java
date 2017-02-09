@@ -100,9 +100,9 @@ public class ListenerServlet extends HttpServlet {
 			}
 	
 			int rc = uc.getResponseCode();
-			if (rc != HttpURLConnection.HTTP_OK) {
-				throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
-			}
+//			if (rc != HttpURLConnection.HTTP_OK) {
+//				throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
+//			}
 			
 			if (rc == HttpURLConnection.HTTP_MOVED_TEMP
 				|| rc == HttpURLConnection.HTTP_MOVED_PERM
