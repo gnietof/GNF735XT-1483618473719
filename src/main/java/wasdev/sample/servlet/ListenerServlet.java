@@ -82,26 +82,46 @@ public class ListenerServlet extends HttpServlet {
 
         response.setContentType("application/json");
         response.getWriter().print("{\"rc\":\"200\"}");
+        
+        callREST("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR","POST",ji.toString(),USER,SECRET);
 
 		URL url = new URL("http://vzzmqi.messaging.internetofthings.ibmcloud.com:1883/api/v0002/device/types/Garmin/devices/gnf735xt/events/HR");
+
+    }
+    
+    private String callREST(String href,String method,String data,String user,String pwd) {
+		URL url = new URL(href);
 		HttpURLConnection uc = (HttpURLConnection)url.openConnection();
 		uc.setDoInput(true);
 		uc.setDoOutput(true);
-		uc.setRequestMethod("POST");
+		uc.setRequestMethod(method);
 //		uc.setRequestProperty("Accept","application/json");
 		uc.setRequestProperty("Content-Type","application/json");
-		BASE64Encoder b64 = new BASE64Encoder();
-		String encoded = b64.encode((USER + ":" + SECRET).getBytes());
-		uc.setRequestProperty("Authorization", "Basic " + encoded);
-		OutputStream os = uc.getOutputStream();
-		os.write(ji2.toString().getBytes());
-		os.close();
+		if (user!=null) {
+			BASE64Encoder b64 = new BASE64Encoder();
+			String encoded = b64.encode((user + ":" + pwd).getBytes());
+			uc.setRequestProperty("Authorization", "Basic " + encoded);
+		} 
+
+		if (data!=null) {
+			OutputStream os = uc.getOutputStream();
+			os.write(data.getBytes());
+			os.close();
+		}
 
 		if (uc.getResponseCode() != HttpURLConnection.HTTP_OK) {
 			throw new RuntimeException("Failed : HTTP error code : "+ uc.getResponseCode());
 		}
 
-      	
+		BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+        StringBuffer sb = new  StringBuffer();
+        String s = "";
+        while ((s = br.readLine()) != null) 
+			sb.append(s);
+		}
+		br.close();
+    	
+    	return (sb.toString());
     }
     
     
