@@ -116,7 +116,7 @@ public class ListenerServlet extends HttpServlet {
 		BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
         StringBuffer sb = new  StringBuffer();
         String s = "";
-        while ((s = br.readLine()) != null) 
+        while ((s = br.readLine()) != null) {
 			sb.append(s);
 		}
 		br.close();
