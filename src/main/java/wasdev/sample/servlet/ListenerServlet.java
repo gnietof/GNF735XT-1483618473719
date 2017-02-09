@@ -70,7 +70,7 @@ public class ListenerServlet extends HttpServlet {
 		JSONObject jo2 = new JSONObject();
 		jo2.put("latitude",request.getParameter("latitude"));
 		jo2.put("longitude",request.getParameter("longitude"));
-        callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),KEY,TOKEN);
+        callREST("https://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),KEY,TOKEN);
 
         response.setContentType("application/json");
         response.getWriter().print("{\"rc\":\"200\"}");
