@@ -111,7 +111,7 @@ public class ListenerServlet extends HttpServlet {
 				String url2 = uc.getHeaderField("Location");
 //				String cookies = uc.getHeaderField("Set-Cookie");
 
-				uc = (HttpURLConnection) new URL(newUrl).openConnection();
+				uc = (HttpURLConnection) new URL(url2).openConnection();
 //		conn.setRequestProperty("Cookie", cookies);
 //		conn.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
 //		conn.addRequestProperty("User-Agent", "Mozilla");
