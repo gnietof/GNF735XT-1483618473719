@@ -61,6 +61,9 @@ public class ListenerServlet extends HttpServlet {
 			String value = request.getParameter(name);
 			ji.put(name, value);
 		}
+		JSONObject ji2 = new JSONObject(); 
+		ji2.put("d",ji);
+
 		
 /*
     	String hr = request.getParameter("hr");
@@ -91,7 +94,7 @@ public class ListenerServlet extends HttpServlet {
 		String encoded = b64.encode((USER + ":" + SECRET).getBytes());
 		uc.setRequestProperty("Authorization", "Basic " + encoded);
 		OutputStream os = uc.getOutputStream();
-		os.write(ji.toString().getBytes());
+		os.write(ji2.toString().getBytes());
 		os.close();
 
 		if (uc.getResponseCode() != HttpURLConnection.HTTP_OK) {
