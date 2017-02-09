@@ -31,6 +31,8 @@ public class ListenerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 	private static final String USER = "use-token-auth";
 	private static final String SECRET = "gnf735XT";
+	private static final String KEY = "a-vzzmqi-dvxvomkx4x";
+	private static final String TOKEN = "c0?me-XmPl&v31jKox";
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -68,7 +70,7 @@ public class ListenerServlet extends HttpServlet {
 		JSONObject jo2 = new JSONObject();
 		jo2.put("latitude",request.getParameter("latitude"));
 		jo2.put("longitude",request.getParameter("longitude"));
-        callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),null,null);
+        callREST("http://vzzmqi.internetofthings.ibmcloud.com/api/v0002/device/types/Garmin/devices/gnf735xt/location","PUT",jo2.toString(),KEY,TOKEN);
 
         response.setContentType("application/json");
         response.getWriter().print("{\"rc\":\"200\"}");
