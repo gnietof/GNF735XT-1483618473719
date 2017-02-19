@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.awt.Graphics2D;
+
 /**
  * Servlet implementation class Icons
  */
@@ -40,10 +44,19 @@ public class IconsServlet extends HttpServlet {
 		if (icon!=null) {
 			System.out.println("IconSize: "+icon.getSize());
 			InputStream zis = zip.getInputStream(icon);
-			byte[] bb = new byte[(int) icon.getSize()];
+/*
+  			byte[] bb = new byte[(int) icon.getSize()];
 			zis.read(bb , 0, (int) icon.getSize());
 			os.write(bb);
+*/
+			BufferedImage bi = ImageIO.read(zis);
 			zis.close();
+
+			BufferedImage bo = new BufferedImage(100,100,bi.getType());
+			Graphics2D g2d = outputImage.createGraphics();
+        	g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);
+        	g2d.dispose();
+        	ImageIO.write(bo,"png",os);
 		}
 		os.close();
 		zip.close();
