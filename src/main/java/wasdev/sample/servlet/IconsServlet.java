@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Icons
  */
 @WebServlet("/Icons")
-public class Icons extends HttpServlet {
+public class IconsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
