@@ -38,6 +38,7 @@ public class IconsServlet extends HttpServlet {
 		
 		ZipEntry icon = zip.getEntry("weathericons/icon"+code+".png");
 		if (icon!=null) {
+			System.out.println("IconSize: "+icon.getSize());
 			InputStream zis = zip.getInputStream(icon);
 			byte[] bb = new byte[(int) icon.getSize()];
 			zis.read(bb , 0, (int) icon.getSize());

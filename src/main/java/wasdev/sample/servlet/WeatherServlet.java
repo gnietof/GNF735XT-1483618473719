@@ -66,9 +66,9 @@ public class WeatherServlet extends HttpServlet {
 //		ji.put("longitude",lng);
         JSONObject jo = callREST("https://twcservice.mybluemix.net/api/weather/v1/geocode/"+lat+"/"+lng+"/forecast/hourly/48hour.json","GET",null,USER,PWD);
         JSONArray forecasts = (JSONArray) jo.get("forecasts");
-        System.out.println(forecasts);
+//        System.out.println(forecasts);
         JSONObject forecast = (JSONObject)(forecasts.get(0));
-        System.out.println(forecast);
+//        System.out.println(forecast);
 //        int temp = forecast0.get("temp");
 //        int icon = forecast0.get("icon_code");
         JSONObject jo2 = new JSONObject();
