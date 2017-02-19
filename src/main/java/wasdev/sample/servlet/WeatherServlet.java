@@ -123,6 +123,7 @@ public class WeatherServlet extends HttpServlet {
 			}			
 	
 
+			StringBuffer sb = new StringBuffer();
 			BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
 	        String s = "";
 	        while ((s = br.readLine()) != null) {
