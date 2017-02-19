@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
+import java.awt.AlphaComposite;
 
 /**
  * Servlet implementation class Icons
@@ -56,8 +57,10 @@ public class IconsServlet extends HttpServlet {
 				ImageIO.write(bi,"png",os);
 			} else {
 				int s = Integer.parseInt(size);
-				BufferedImage bo = new BufferedImage(s,s,bi.getType());
+//				BufferedImage bo = new BufferedImage(s,s,BufferedImage.TYPE_INT_ARGB);
+				BufferedImage bo = new BufferedImage(s,s,BufferedImage.TYPE_INT_ARGB);
 				Graphics2D g2d = bo.createGraphics();
+				g2d.setComposite(AlphaComposite.Src);
         		g2d.drawImage(bi, 0, 0, s, s, null);
         		g2d.dispose();
         		ImageIO.write(bo,"png",os);
