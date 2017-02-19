@@ -22,7 +22,7 @@ public class IconsServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Icons() {
+    public IconsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
