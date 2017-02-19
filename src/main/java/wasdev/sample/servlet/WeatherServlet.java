@@ -61,10 +61,10 @@ public class WeatherServlet extends HttpServlet {
 */
 		String lat = request.getParameter("latitude");
 		String lng = request.getParameter("longitude");
-		JSONObject ji = new JSONObject();
-		ji.put("latitude",lat);
-		ji.put("longitude",lng);
-        JSONObject jo = callREST("https://twcservice.mybluemix.net/api/weather/v1/geocode/"+lat+"/"+lng+"/forecast/hourly/48hour.json","GET",ji.toString(),USER,PWD);
+//		JSONObject ji = new JSONObject();
+//		ji.put("latitude",lat);
+//		ji.put("longitude",lng);
+        JSONObject jo = callREST("https://twcservice.mybluemix.net/api/weather/v1/geocode/"+lat+"/"+lng+"/forecast/hourly/48hour.json","GET",null,USER,PWD);
         JSONArray forecast = (JSONArray) jo.get("forecast");
         JSONObject forecast0 = (JSONObject)(forecast.get(0));
 //        int temp = forecast0.get("temp");
@@ -122,7 +122,7 @@ public class WeatherServlet extends HttpServlet {
 
 			}			
 	
-/*
+
 			BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
 	        String s = "";
 	        while ((s = br.readLine()) != null) {
@@ -130,8 +130,9 @@ public class WeatherServlet extends HttpServlet {
 			}
 			br.close();
 			System.out.println(sb.toString());
-*/			
-			jo = JSONObject.parse(uc.getInputStream());
+			jo = JSONObject.parse(sb.toString());
+			
+//			jo = JSONObject.parse(uc.getInputStream());
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();			
