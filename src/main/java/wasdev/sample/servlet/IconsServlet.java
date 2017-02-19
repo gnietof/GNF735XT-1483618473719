@@ -36,6 +36,7 @@ public class IconsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String code = req.getParameter("icon");
+		String size = req.getParameter("size");
 		ZipFile zip = new ZipFile(req.getSession().getServletContext().getResource("/weatherinsightsicons.zip").getFile());
 		
 		ServletOutputStream os = res.getOutputStream();
@@ -51,12 +52,17 @@ public class IconsServlet extends HttpServlet {
 */
 			BufferedImage bi = ImageIO.read(zis);
 			zis.close();
+			if (size==null) {
+				ImageIO.write(bi,"png",os);
+			} else {
+				int s = Integer.parseInt(size);
+				BufferedImage bo = new BufferedImage(s,s,bi.getType());
+				Graphics2D g2d = bo.createGraphics();
+        		g2d.drawImage(bi, 0, 0, s, s, null);
+        		g2d.dispose();
+        		ImageIO.write(bo,"png",os);
+    		}
 
-			BufferedImage bo = new BufferedImage(100,100,bi.getType());
-			Graphics2D g2d = bo.createGraphics();
-        	g2d.drawImage(bi, 0, 0, 100, 100, null);
-        	g2d.dispose();
-        	ImageIO.write(bo,"png",os);
 		}
 		os.close();
 		zip.close();
