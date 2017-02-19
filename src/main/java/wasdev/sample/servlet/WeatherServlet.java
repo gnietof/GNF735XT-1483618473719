@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 //import com.ibm.json.java.JSONObject;
 
 import com.ibm.json.java.JSONObject;
+import com.ibm.json.java.JSONArray;
 import com.ibm.misc.BASE64Encoder;
 
 /**
