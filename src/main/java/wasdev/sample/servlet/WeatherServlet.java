@@ -79,8 +79,8 @@ public class WeatherServlet extends HttpServlet {
 
     }
     
-    private String callREST(String href,String method,String data,String user,String pwd) {
-        StringBuffer sb = new  StringBuffer();
+    private JSONObject callREST(String href,String method,String data,String user,String pwd) {
+    	JSONObject jo = null;
 
 		try {
 			URL url = new URL(href);
@@ -122,6 +122,7 @@ public class WeatherServlet extends HttpServlet {
 
 			}			
 	
+/*
 			BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
 	        String s = "";
 	        while ((s = br.readLine()) != null) {
@@ -129,12 +130,14 @@ public class WeatherServlet extends HttpServlet {
 			}
 			br.close();
 			System.out.println(sb.toString());
+*/			
+			jo = new JSONObject(uc.getInputStream());
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();			
 		}
 
-    	return (sb.toString());
+    	return (jo);
     }
     
     
