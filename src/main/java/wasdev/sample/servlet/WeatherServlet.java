@@ -30,10 +30,8 @@ import com.ibm.misc.BASE64Encoder;
 @WebServlet("/Weather")
 public class WeatherServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-	private static final String USER = "use-token-auth";
-	private static final String SECRET = "gnf735XT";
-	private static final String KEY = "a-vzzmqi-dvxvomkx4x";
-	private static final String TOKEN = "c0?me-XmPl&v31jKox";
+	private static final String USER = "ca8f5e30-8831-472d-9d06-d08e2fdf1f28";
+	private static final String PWD = "hLrSPTwgSG";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,7 +64,7 @@ public class WeatherServlet extends HttpServlet {
 		JSONObject ji = new JSONObject();
 		ji.put("latitude",lat);
 		ji.put("longitude",lng);
-        JSONObject jo = callREST("https://twcservice.mybluemix.net/api/weather/v1/geocode/"+lat+"/"+lng+"/forecast/daily/3day.json","GET",ji.toString(),KEY,TOKEN);
+        JSONObject jo = callREST("https://twcservice.mybluemix.net/api/weather/v1/geocode/"+lat+"/"+lng+"/forecast/daily/3day.json","GET",ji.toString(),USER,PWD);
         JSONArray forecast = (JSONArray) jo.get("forecast");
         JSONObject forecast0 = (JSONObject)(forecast.get(0));
 //        int temp = forecast0.get("temp");
