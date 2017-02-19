@@ -73,7 +73,7 @@ public class WeatherServlet extends HttpServlet {
 //        int icon = forecast0.get("icon_code");
         JSONObject jo2 = new JSONObject();
         jo2.put("temp",forecast.get("temp"));
-        jo2.put("icon",forecast.get("icon"));
+        jo2.put("icon",forecast.get("icon_code"));
 
         response.setContentType("application/json");
         response.getWriter().print(jo2);
