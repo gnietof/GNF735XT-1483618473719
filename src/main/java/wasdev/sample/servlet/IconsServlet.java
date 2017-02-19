@@ -53,8 +53,8 @@ public class IconsServlet extends HttpServlet {
 			zis.close();
 
 			BufferedImage bo = new BufferedImage(100,100,bi.getType());
-			Graphics2D g2d = outputImage.createGraphics();
-        	g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);
+			Graphics2D g2d = bo.createGraphics();
+        	g2d.drawImage(bi, 0, 0, 100, 100, null);
         	g2d.dispose();
         	ImageIO.write(bo,"png",os);
 		}
