@@ -78,6 +78,9 @@ public class WeatherServlet extends HttpServlet {
 	        jai.put("feels",forecast.get("feels_like"));
 	        jai.put("wspd",forecast.get("wspd"));
 	        jai.put("wdir",forecast.get("wdir_cardinal"));
+	        jai.put("clds",forecast.get("clds"));
+	        jai.put("vis",forecast.get("vis"));
+	        jai.put("uv",forecast.get("uv_index"));
 	        ja.add(jai);
         }
 
