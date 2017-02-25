@@ -67,9 +67,9 @@ public class WeatherServlet extends HttpServlet {
         JSONArray forecasts = (JSONArray) ji.get("forecasts");
         JSONArray ja = new JSONArray();
         for (int i=0;i<forecasts.size();i++) {
-	        JSONObject forecast = (JSONObject)(forecasts.get(0));
+	        JSONObject forecast = (JSONObject)(forecasts.get(i));
 	        JSONObject jai = new JSONObject();
-	        long valid = forecast.get("fcst_valid");
+	        long valid = (Long)forecast.get("fcst_valid");
 	        jai.put("valid",sdf.format(valid));
 	        jai.put("temp",forecast.get("temp"));
 	        jai.put("icon",forecast.get("icon_code"));
