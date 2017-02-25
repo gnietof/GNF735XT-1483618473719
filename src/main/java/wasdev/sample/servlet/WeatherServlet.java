@@ -82,8 +82,6 @@ public class WeatherServlet extends HttpServlet {
 
         response.setContentType("application/json");
         response.getWriter().print(ja);
-        ;
-
     }
     
     private JSONObject callREST(String href,String method,String data,String user,String pwd) {
