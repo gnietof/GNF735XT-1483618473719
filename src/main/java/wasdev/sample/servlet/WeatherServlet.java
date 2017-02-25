@@ -34,6 +34,7 @@ public class WeatherServlet extends HttpServlet {
 	private static final String USER = "ca8f5e30-8831-472d-9d06-d08e2fdf1f28";
 	private static final String PWD = "hLrSPTwgSG";
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	private static final SimpleDateFormat sdf2 = new SimpleDateFormat("EEE");
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -70,6 +71,7 @@ public class WeatherServlet extends HttpServlet {
 	        JSONObject forecast = (JSONObject)(forecasts.get(i));
 	        JSONObject jai = new JSONObject();
 	        long valid = (Long)forecast.get("fcst_valid")*1000;
+	        jai.put("dow",sdf2.format(valid));
 	        jai.put("valid",sdf.format(valid));
 	        jai.put("temp",forecast.get("temp"));
 	        jai.put("icon",forecast.get("icon_code"));
