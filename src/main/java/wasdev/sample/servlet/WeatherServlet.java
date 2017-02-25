@@ -33,7 +33,7 @@ public class WeatherServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 	private static final String USER = "ca8f5e30-8831-472d-9d06-d08e2fdf1f28";
 	private static final String PWD = "hLrSPTwgSG";
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mmm");
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
